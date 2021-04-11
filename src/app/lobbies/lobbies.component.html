@@ -8,14 +8,15 @@
           <li><a href="#">Create Open Lobby</a></li>
           <li><a href="#">Play a Computer</a></li>
           <li><a href="#">Play With Friends</a></li>
+          <li><a (click)="gotoGame()">Go to test game</a></li>
         </ul>
       </nav>
 </section>
 
 <aside>
   <div>
-    
-      <!-- How we listed the devices is how we should display lobbies here-->
-    
+    <div *ngFor='let game of this.openGames; let i = index'>
+          <a (click)="enterGame(this.openGames[i].gameId)">Join Game {{game.gameId}}</a>
+    </div>    
   </div>
 </aside>
