@@ -1,0 +1,50 @@
+
+section{
+    float: left;
+    width: 15%;
+    height: 602px;;
+    padding: 20px;
+    background-color: rgb(80, 80, 80);
+}
+
+header{
+    text-align: right;
+    background-color: rgb(35, 35, 35);
+}
+
+aside{
+    background-color: rgb(55, 55, 55);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:link, a:visited {
+    background-color: #3cf436;
+    color: white;
+    padding: 10px 25px;
+    margin: 5px;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+  
+a:hover, a:active {
+    background-color: green;
+}
+
+div{
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 2px;
+    border-color: rgb(80, 80, 80);
+    border-radius: 3px;
+}
