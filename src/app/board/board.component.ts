@@ -15,7 +15,7 @@ export class BoardComponent implements OnInit {
   //chat: string = 'Message: hey there \n Message: How\'s it going?\n';
   board: any;
   gameId:number;
-  API_URL:string = 'https://localhost:44346/api/Games/';
+  API_URL:string = 'https://agile-chess-api.azurewebsites.net/api/Games/';
   DEVICE_URL: string = 'https://luxo-api-test.azurewebsites.net/api/Devices/';
   currentGame!: Game;
   deviceForm: FormGroup;

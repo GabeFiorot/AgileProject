@@ -9,7 +9,7 @@ import {Game} from '../board/Game'
 })
 export class LobbiesComponent implements OnInit {
   openGames: Game[];
-  API_URL:string = "https://localhost:44346/api/Games/";
+  API_URL:string = "https://agile-chess-api.azurewebsites.net/api/Games/";
   constructor(private router:Router, private httpClient: HttpClient) {
     this.openGames = [{
       "gameId": 4,
