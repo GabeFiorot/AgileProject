@@ -9,6 +9,7 @@ import {Game} from '../board/Game'
 })
 export class LobbiesComponent implements OnInit {
   openGames: Game[];
+  userId:number = -1;
   API_URL:string = "https://agile-chess-api.azurewebsites.net/api/Games/";
   constructor(private router:Router, private httpClient: HttpClient) {
     this.openGames = [{
@@ -30,7 +31,12 @@ export class LobbiesComponent implements OnInit {
   
   ngOnInit(): void {
     this.getGames();
-
+    try {
+      this.userId = history.state.data.userId;
+    } catch (error) {
+      console.log('user is not logged in')
+    }
+    
   }
 
   gotoGame()
@@ -45,6 +51,16 @@ export class LobbiesComponent implements OnInit {
     this.router.navigate(['/game-board'], {state: {data: {gameId : id}}});
   }
 
+  createGame()
+  {
+    var id;
+    // create a game for the current user
+      
+    // go to the game
+    console.log("Joining game id : " + id);
+    this.router.navigate(['/game-board'], {state: {data: {gameId : id}}});
+  }
+
   getGames()
   {
     this.httpClient
@@ -55,4 +71,7 @@ export class LobbiesComponent implements OnInit {
           this.openGames = res;
         }, err => console.log(err));
   }
+
+
+
 }

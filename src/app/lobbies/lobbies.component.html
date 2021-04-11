@@ -1,5 +1,6 @@
 <header>
-    <a href="#">Login</a>
+    <a *ngIf='this.userId == -1' href="/login">Login</a>
+    <a *ngIf='this.userId != -1' >Welcome, {{this.userId}}</a>
 </header>
 
 <section>
@@ -15,6 +16,7 @@
 
 <aside>
   <div>
+    <a (click)="getGames()">Refresh</a>
     <div *ngFor='let game of this.openGames; let i = index'>
           <a (click)="enterGame(this.openGames[i].gameId)">Join Game {{game.gameId}}</a>
     </div>    

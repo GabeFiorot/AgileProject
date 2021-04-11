@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray, Form} from '@angular/forms';
 import { HttpClient,HttpHeaders   } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {Game} from './Game'
+import {Game} from './Game';
 declare var ChessBoard: any;
 
 @Component({
@@ -14,9 +14,8 @@ export class BoardComponent implements OnInit {
 
   //chat: string = 'Message: hey there \n Message: How\'s it going?\n';
   board: any;
-  gameId:number;
+  gameId!:number;
   API_URL:string = 'https://agile-chess-api.azurewebsites.net/api/Games/';
-  DEVICE_URL: string = 'https://luxo-api-test.azurewebsites.net/api/Devices/';
   currentGame!: Game;
   deviceForm: FormGroup;
   constructor(private httpClient: HttpClient, private fb:FormBuilder, private router:Router) {
@@ -24,17 +23,18 @@ export class BoardComponent implements OnInit {
       this.deviceForm = this.fb.group({
         message: ['', Validators.required]
       });
-      this.gameId = history.state.data.gameId;
-      console.log("game " + this.gameId + " entered");
+      
+      
    }
 
   ngOnInit(): void {
     
-
     this.board = ChessBoard('board1', {
       position: 'start',
       draggable: true
     });
+    this.gameId = history.state.data.gameId;
+    console.log("game " + this.gameId + " entered");
     this.updateGame(this.gameId);
   }
 
