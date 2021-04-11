@@ -1,9 +1,18 @@
 
   <section>
-    <div id="board1" style="width: 800px;"></div>
+    <div id="board1" ></div>
   </section>
   
 
  <aside>
-    <div id="board1" style="width: 800px;"></div>
+   <div style="margin-left: 10px; white-space: pre-wrap;">
+    {{chat}}
+    <form [formGroup]="deviceForm"  >
+      <label>
+        <input type="text" formControlName="message"  required>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+   </div>
+
 </aside> 
