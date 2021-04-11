@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule, F
 })
 export class LoginComponent implements OnInit {
   API_URL:string = "https://agile-chess-api.azurewebsites.net/api/Games/";
+  LOGIN_URL:string = 'https://agile-chess-api.azurewebsites.net/api/profile/';
   loginForm: FormGroup;
   constructor(private router:Router, private httpClient: HttpClient, private fb:FormBuilder) {
     this.loginForm = this.fb.group({
@@ -24,8 +25,41 @@ export class LoginComponent implements OnInit {
 
   login() // THIS IS A TEMP FUNCTION IT IS NOT AN ACTUAL LOGIN
   {
-    this.router.navigate(['/'], {state: {data: {userId : this.loginForm.value.id}}});
+
+    var password = this.loginForm.value.password;
+    //this.router.navigate(['/'], {state: {data: {userId : this.loginForm.value.id}}});
+    var json;
+    this.sha256(password).then(hash => {
+      //console.log(url + hash)
+      this.httpClient
+        .get<any>(this.LOGIN_URL + '?username=' + this.loginForm.value.username + '&pass=' + hash)
+        .subscribe(res => {
+          json = res;
+          console.log("json: " + json);
+          this.router.navigate(['/devices'], {state: {data: {userId : json}}});
+      
+    } , err => {
+      console.log(err.error.text);    
+    });
+    });
+
+
 
   }
+
+  async sha256(message:string) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder().encode(message);                    
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    return hashHex;
+}
 
 }
