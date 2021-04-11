@@ -14,6 +14,8 @@
 </section>
 
 <aside>
+  <h2>Open Lobbies:</h2>
+  <br>
   <div>
     <div *ngFor='let game of this.openGames; let i = index'>
           <a (click)="enterGame(this.openGames[i].gameId)">Join Game {{game.gameId}}</a>
