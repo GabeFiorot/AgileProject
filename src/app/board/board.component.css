@@ -1,0 +1,23 @@
+
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color: rgb(117, 117, 117);
+  }
+  /* Control the left side */
+  .left {
+    left: 0;
+    background-color: rgb(44, 51, 54);
+  }
+  
+  section {
+    float: left;
+    width: 50%;
+  }
+
+  aside{
+    float: right;
+    width: 50%;
+  }
+  
