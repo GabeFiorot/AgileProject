@@ -6,7 +6,7 @@
 
  <aside>
    <div style="margin-left: 10px; white-space: pre-wrap;">
-    {{chat}}
+    {{this.currentGame.chat}}
     <form [formGroup]="deviceForm" (ngSubmit)="sendMessage()" >
       <label>
         <input type="text" formControlName="message"  required>

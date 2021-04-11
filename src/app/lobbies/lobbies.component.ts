@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient,HttpHeaders   } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Game} from '../board/Game'
 @Component({
@@ -8,7 +9,8 @@ import {Game} from '../board/Game'
 })
 export class LobbiesComponent implements OnInit {
   openGames: Game[];
-  constructor(private router:Router) {
+  API_URL:string = "https://localhost:44346/api/Games/";
+  constructor(private router:Router, private httpClient: HttpClient) {
     this.openGames = [{
       "gameId": 4,
       "playerW": 1,
@@ -27,6 +29,8 @@ export class LobbiesComponent implements OnInit {
    }
   
   ngOnInit(): void {
+    this.getGames();
+
   }
 
   gotoGame()
@@ -39,5 +43,16 @@ export class LobbiesComponent implements OnInit {
   {
     console.log("Joining game id : " + id);
     this.router.navigate(['/game-board'], {state: {data: {gameId : id}}});
+  }
+
+  getGames()
+  {
+    this.httpClient
+        // note that you gotta put the schedule id in the url string
+        .get<any>(this.API_URL)
+        .subscribe(res => {
+          console.log(res);
+          this.openGames = res;
+        }, err => console.log(err));
   }
 }

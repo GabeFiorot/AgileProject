@@ -12,10 +12,10 @@ declare var ChessBoard: any;
 })
 export class BoardComponent implements OnInit {
 
-  chat: string = 'Message: hey there \n Message: How\'s it going?\n';
+  //chat: string = 'Message: hey there \n Message: How\'s it going?\n';
   board: any;
   gameId:number;
-  API_URL:string = 'https://localhost:44346/weatherforecast';
+  API_URL:string = 'https://localhost:44346/api/Games/';
   DEVICE_URL: string = 'https://luxo-api-test.azurewebsites.net/api/Devices/';
   currentGame!: Game;
   deviceForm: FormGroup;
@@ -25,6 +25,7 @@ export class BoardComponent implements OnInit {
         message: ['', Validators.required]
       });
       this.gameId = history.state.data.gameId;
+      console.log("game " + this.gameId + " entered");
    }
 
   ngOnInit(): void {
@@ -34,24 +35,25 @@ export class BoardComponent implements OnInit {
       position: 'start',
       draggable: true
     });
-    this.updateGame(4)
+    this.updateGame(this.gameId);
   }
 
   updateGame(gameId:number)
   {
     this.httpClient
         // note that you gotta put the schedule id in the url string
-        .get<any>(this.API_URL)
+        .get<any>(this.API_URL + this.gameId)
         .subscribe(res => {
           console.log(res);
           this.currentGame = res;
+          this.gameId = this.currentGame.gameId;
         }, err => console.log(err));
   }
 
   sendMessage()
   {
     console.log("sent: " + this.deviceForm.value.message);
-    this.chat += (this.deviceForm.value.message + '\n');
+    this.currentGame.chat += (this.deviceForm.value.message + '\n');
     this.deviceForm.patchValue(
       {
         message: ""
