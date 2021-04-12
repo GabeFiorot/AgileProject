@@ -18,6 +18,8 @@ button{
     padding-left: 5px;
     padding-right: 5px;
     padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-left: 5px;
     text-align: center;
     display: inline-block;
@@ -26,4 +28,5 @@ button{
 
 button:hover{
     background-color: green;
+    cursor: pointer;
 }

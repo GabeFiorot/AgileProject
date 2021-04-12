@@ -37,6 +37,7 @@ a.buttons{
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    cursor: pointer;
 }
 
 a:link, a:visited {
@@ -60,6 +61,7 @@ a.lobbies{
 
 a.lobbies:hover, a.lobbies:active {
     color: #34ce2f;
+    cursor: pointer;
 }
 
 a.login{
