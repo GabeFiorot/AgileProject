@@ -31,6 +31,9 @@ export class BoardComponent implements OnInit {
   game: any = new Chess();
   gameId!:number;
   API_URL:string = 'https://agile-chess-api.azurewebsites.net/api/Games/';
+  GETGAME_URL:string = 'https://agile-chess-api.azurewebsites.net/update?id=';
+  CHAT_URL:string = 'https://agile-chess-api.azurewebsites.net/chatSend?id=';
+  UPDATE_URL:string = 'https://agile-chess-api.azurewebsites.net/move?id=';
   currentGame!: Game;
   deviceForm: FormGroup;
   obj: any;
@@ -130,7 +133,7 @@ export class BoardComponent implements OnInit {
 
     this.gameId = history.state.data.gameId;
     console.log("game " + this.gameId + " entered");
-    this.updateGame(this.gameId);
+    this.updateGame();
    }
 
    isOpponentPresent()
@@ -143,13 +146,21 @@ export class BoardComponent implements OnInit {
   pushGameState()
   {
     //make the database update
+    this.httpClient
+    // note that you gotta put the schedule id in the url string
+    .get<any>(this.UPDATE_URL + this.gameId + '&fen=' + this.currentGame.fen)
+    .subscribe(res => {
+      console.log(res);
+      //this.currentGame = res;
+      //this.gameId = this.currentGame.gameId;
+    }, err => console.log(err));
   }
 
-  updateGame(gameId:number)
+  updateGame()
   {
     this.httpClient
         // note that you gotta put the schedule id in the url string
-        .get<any>(this.API_URL + this.gameId)
+        .get<any>(this.GETGAME_URL + this.gameId)
         .subscribe(res => {
           console.log(res);
           this.currentGame = res;
@@ -166,6 +177,17 @@ export class BoardComponent implements OnInit {
         message: ""
       }
     );
+
+
+    this.httpClient
+    // note that you gotta put the schedule id in the url string  4&chat=evenmorechat
+    .get<any>(this.CHAT_URL + this.gameId +'&chat=' + this.currentGame.chat)
+    .subscribe(res => {
+      console.log(res);
+      //this.currentGame = res;
+      //this.gameId = this.currentGame.gameId;
+    }, err => console.log(err));
+
   }
 
 }
