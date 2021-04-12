@@ -1,6 +1,12 @@
 
   <section>
     <div id="board1" ></div>
+    <label>Status:</label>
+    <div id="status"></div>
+    <label>FEN:</label>
+    <div id="fen"></div>
+    <label>PGN:</label>
+    <div id="pgn"></div>
   </section>
   
 
@@ -8,7 +14,7 @@
    <h3>Chat:</h3>
    <br>
    <div *ngIf='this.isOpponentPresent()'>Waiting for Opponent</div>
-   
+
    <div style="margin-left: 10px; white-space: pre-wrap;">
     <article>
       {{this.currentGame.chat}}
@@ -18,6 +24,9 @@
         </label>
         <button type="submit" >Send</button>
       </form>
+      <a class='buttons' (click)="updateGame()">update game</a>
+      <a class='buttons' (click)="pushGameState()">push state</a>
+
     </article>
    </div> 
 </aside> 
