@@ -31,7 +31,7 @@ a.buttons{
     text-decoration: none;
     color: white;
     margin: 5px;
-    background-color: #34ce2f;
+    background-color: #16a711;
     padding: 10px 25px;
     width: 140px;
     text-align: center;
@@ -68,9 +68,9 @@ a.login{
     text-decoration: none;
     color: white;
     margin: 5px;
-    background-color: #34ce2f;
+    margin-right: 10px;
+    background-color: #16a711;
     padding: 10px 25px;
-    width: 140px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -84,11 +84,14 @@ a.profile{
     text-decoration: none;
     color: white;
     margin: 5px;
+    background-color: #16a711;
+    padding: 10px 25px;
+    width: 140px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
 
 a.profile:hover, a.profile:active {
-    color: #34ce2f;
+    background-color: green;
 }
