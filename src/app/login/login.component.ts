@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, private httpClient: HttpClient, private fb:FormBuilder) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      id: ['', Validators.required]
+      password: ['', Validators.required]
     });
    }
 
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           json = res;
           console.log("json: " + json);
-          this.router.navigate(['/devices'], {state: {data: {userId : json}}});
+          this.router.navigate(['/devices'], {state: {data: {userId : json, username : this.loginForm.value.username}}});
       
     } , err => {
       console.log(err.error.text);    
