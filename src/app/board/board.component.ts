@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule, F
 import { HttpClient,HttpHeaders   } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Game} from './Game';
+import * as $ from 'jquery';
 // import { Chess } from '../../../node_modules/chess.js/chess.js';
 declare var ChessBoard: any;
 //import * as Chess from 'chess.js';
@@ -101,6 +102,10 @@ export class BoardComponent implements OnInit {
         status += ', ' + moveColor + ' is in check'
       }
     }
+
+  $('#status').html(status)
+  $('#fen').html(this.game.fen())
+  $('#pgn').html(this.game.pgn())
 
   }
 
