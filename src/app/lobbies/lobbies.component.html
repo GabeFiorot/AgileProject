@@ -1,15 +1,15 @@
 <header>
-    <a *ngIf='this.userId == -1' href="/login">Login</a>
-    <a *ngIf='this.userId != -1' >Welcome, {{this.userId}}</a>
+    <a class='login' *ngIf='this.userId == -1' href="/login">Login</a>
+    <a class='profile'*ngIf='this.userId != -1' >Welcome, {{this.userId}}</a>
 </header>
 
 <section>
     <nav>
         <ul>
-          <li><a href="#">Create Open Lobby</a></li>
-          <li><a href="#">Play a Computer</a></li>
-          <li><a href="#">Play With Friends</a></li>
-          <li><a (click)="gotoGame()">Go to test game</a></li>
+          <li><a class='buttons'>Create Open Lobby</a></li>
+          <li><a class='buttons'>Play a Computer</a></li>
+          <li><a class='buttons'>Play With Friends</a></li>
+          <li><a class='buttons' (click)="gotoGame()">Go to test game</a></li>
         </ul>
       </nav>
 </section>
@@ -17,12 +17,12 @@
 <aside>
   <div>
     <h2>Open Lobbies:</h2>
-    <a (click)="getGames()">Refresh</a>
+    <a class='lobbies' (click)="getGames()">Refresh</a>
   </div>
   <br>
   <div>
     <div *ngFor='let game of this.openGames; let i = index'>
-          <a (click)="enterGame(this.openGames[i].gameId)">Join Game {{game.gameId}}</a>
+          <a class='lobbies'(click)="enterGame(this.openGames[i].gameId)">Join Game {{game.gameId}}</a>
     </div>    
   </div>
 </aside>
