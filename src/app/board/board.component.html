@@ -24,8 +24,6 @@
         </label>
         <button type="submit" >Send</button>
       </form>
-      <a class='buttons' (click)="updateGame()">update game</a>
-      <a class='buttons' (click)="pushGameState()">push state</a>
 
     </article>
    </div> 
@@ -33,6 +31,10 @@
 
 <footer>
   <div>
-    <a class='ragequit'> Quit Match</a>
+    <a class='buttons' (click)="updateGame()">Update Game</a>
+    <a class='buttons' (click)="pushGameState()">Push State</a>
+    <br>
+    <br>
+    <a class='ragequit'>Quit Match</a>
   </div>
 </footer>
