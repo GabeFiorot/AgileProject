@@ -42,7 +42,6 @@ export class LobbiesComponent implements OnInit {
     {
       alert("You must be logged in to join a game");
       return;
-
     }
     console.log("Joining game id : " + id);
     this.httpClient
@@ -60,6 +59,11 @@ export class LobbiesComponent implements OnInit {
 
   createGame()
   {
+    if(this.userId <=0)
+    {
+      alert("You must be logged in to start a game");
+      return;
+    }
     var newId;
     // create a game for the current user
     this.httpClient

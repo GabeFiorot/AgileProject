@@ -6,7 +6,7 @@
 <section>
     <nav>
         <ul>
-          <li><a class='buttons'>Create Open Lobby</a></li>
+          <li><a class='buttons' (click)="createGame()">Create Open Lobby</a></li>
           <li><a class='buttons'>Play a Computer</a></li>
           <li><a class='buttons'>Play With Friends</a></li>
           <li><a class='buttons' (click)="gotoGame()">Go to test game</a></li>
@@ -22,7 +22,7 @@
   <br>
   <div>
     <div *ngFor='let game of this.openGames; let i = index'>
-          <a (click)="enterGame(this.openGames[i].gameId)">Host: {{game.hostName}} : {{game.hostElo}} elo : {{game.hostColor}}</a>
+          <a class='lobbies' (click)="enterGame(this.openGames[i].gameId)">Host: {{game.hostName}} : {{game.hostElo}} elo : {{game.hostColor}}</a>
     </div>    
   </div>
 </aside>
