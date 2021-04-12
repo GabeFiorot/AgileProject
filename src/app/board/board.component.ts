@@ -111,10 +111,17 @@ export class BoardComponent implements OnInit {
     this.board = ChessBoard('board1', config)
     // this.game = new Chess()
 
+
     this.gameId = history.state.data.gameId;
     console.log("game " + this.gameId + " entered");
     this.updateGame(this.gameId);
-  }
+   }
+
+   isOpponentPresent()
+   {
+     return ((this.currentGame.playerB == -1) || (this.currentGame.playerW == -1))
+   }
+
 
   updateGame(gameId:number)
   {

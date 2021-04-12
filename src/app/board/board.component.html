@@ -5,14 +5,20 @@
   
 
  <aside>
+   <h3>Chat:</h3>
+   <br>
+   <div *ngIf='this.isOpponentPresent()'>Waiting for Opponent</div>
+   
    <div style="margin-left: 10px; white-space: pre-wrap;">
-    {{this.currentGame.chat}}
-    <form [formGroup]="deviceForm" (ngSubmit)="sendMessage()" >
-      <label>
-        <input type="text" formControlName="message"  required>
-      </label>
-      <button type="submit" >Send</button>
-    </form>
+    <article>
+      {{this.currentGame.chat}}
+      <form [formGroup]="deviceForm" (ngSubmit)="sendMessage()" >
+        <label>
+          <input type="text" formControlName="message"  required>
+        </label>
+        <button type="submit" >Send</button>
+      </form>
+    </article>
    </div>
 
 </aside> 

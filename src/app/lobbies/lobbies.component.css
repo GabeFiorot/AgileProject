@@ -2,7 +2,7 @@
 section{
     float: left;
     width: 15%;
-    height: 602px;;
+    height: 792px;
     padding: 20px;
     background-color: rgb(80, 80, 80);
 }
@@ -13,7 +13,13 @@ header{
 }
 
 aside{
-    background-color: rgb(55, 55, 55);
+    float: left;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(109, 108, 108);
+    border: 2px;
+    border-color: rgb(80, 80, 80);
+    border-radius: 3px;
 }
 
 nav ul {
@@ -21,30 +27,68 @@ nav ul {
     padding: 0;
 }
 
-a{
+a.buttons{
     text-decoration: none;
     color: white;
+    margin: 5px;
+    background-color: #34ce2f;
+    padding: 10px 25px;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
 a:link, a:visited {
-    background-color: #3cf436;
-    color: white;
-    padding: 10px 25px;
-    margin: 5px;
-    width: 140px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
   
-a:hover, a:active {
+a.buttons:hover, a.buttons:active {
     background-color: green;
 }
 
-div{
-    margin: 20px;
-    background-color: rgb(109, 108, 108);
-    border: 2px;
-    border-color: rgb(80, 80, 80);
-    border-radius: 3px;
+a.lobbies{
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.lobbies:hover, a.lobbies:active {
+    color: #34ce2f;
+    cursor: pointer;
+}
+
+a.login{
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+    background-color: #34ce2f;
+    padding: 10px 25px;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.login:hover, a.login:active {
+    background-color: green;
+}
+
+a.profile{
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.profile:hover, a.profile:active {
+    color: #34ce2f;
 }
