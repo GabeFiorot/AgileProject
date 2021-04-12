@@ -24,7 +24,6 @@ export class BoardComponent implements OnInit {
         message: ['', Validators.required]
       });
       
-      
    }
 
    isOpponentPresent()
@@ -41,6 +40,11 @@ export class BoardComponent implements OnInit {
     this.gameId = history.state.data.gameId;
     console.log("game " + this.gameId + " entered");
     this.updateGame(this.gameId);
+  }
+
+  pushGameState()
+  {
+    //make the database update
   }
 
   updateGame(gameId:number)
