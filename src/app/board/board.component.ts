@@ -150,6 +150,7 @@ export class BoardComponent implements OnInit {
 
   pushGameState()
   {
+    this.currentGame.fen = this.game.fen();
     //make the database update
     this.httpClient
     // note that you gotta put the schedule id in the url string
@@ -170,6 +171,8 @@ export class BoardComponent implements OnInit {
           console.log(res);
           this.currentGame = res;
           this.gameId = this.currentGame.gameId;
+          this.board.position(this.currentGame.fen);
+          this.game.load(this.currentGame.fen);
         }, err => console.log(err));
   }
 
