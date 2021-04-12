@@ -5,9 +5,11 @@ import { Router } from '@angular/router';
 import {Game} from './Game';
 // import { Chess } from '../../../node_modules/chess.js/chess.js';
 declare var ChessBoard: any;
-//import * as Chess from "chess.js";
+//import * as Chess from 'chess.js';
+declare var require: any
+const Chess = require('chess.js');
 // declare var Chess: any;
-//declare var require: any
+
 //const { Chess } = require('chess.js')
 
 // import { ChessInstance } from '~/chess.js'
@@ -25,11 +27,13 @@ export class BoardComponent implements OnInit {
 
   //chat: string = 'Message: hey there \n Message: How\'s it going?\n';
   board: any;
-  game: any;
+  //game: any;
+  game: any = new Chess();
   gameId!:number;
   API_URL:string = 'https://agile-chess-api.azurewebsites.net/api/Games/';
   currentGame!: Game;
   deviceForm: FormGroup;
+  obj: any;
   constructor(private httpClient: HttpClient, private fb:FormBuilder, private router:Router) {
 
       this.deviceForm = this.fb.group({
@@ -39,6 +43,7 @@ export class BoardComponent implements OnInit {
    }
 
    onDragStart (source: any, piece: any, position: any, orientation: any) {
+     console.log(this.API_URL);
     // do not pick up pieces if the game is over
     if (this.game.game_over()) return false
   
@@ -66,7 +71,7 @@ export class BoardComponent implements OnInit {
   }
 
   onSnapEnd () {
-    this.board.position(this.game.fen())
+    this.obj.board.position(this.game.fen())
   }
 
   updateStatus () {
@@ -99,15 +104,27 @@ export class BoardComponent implements OnInit {
 
   }
 
+  getBoard()
+  {
+    return this.board;
+  }
+
   ngOnInit(): void {
     var config = {
       draggable: true,
       position: 'start',
       onDragStart: this.onDragStart,
       onDrop: this.onDrop,
-      onSnapEnd: this.onSnapEnd
+      onSnapEnd: this.onSnapEnd,
+      updateStatus: this.updateStatus,
+      board: this.getBoard,
+      testString: "here I am",
+      game : this.game,
+      obj : this
     }
-    this.board = ChessBoard('board1', config)
+    this.board = ChessBoard('board1', config);
+    //this.board.game = this.game;
+    this.board.newValue = 'hey its me';
     // this.game = new Chess()
 
 
@@ -118,7 +135,8 @@ export class BoardComponent implements OnInit {
 
    isOpponentPresent()
    {
-     return ((this.currentGame.playerB == -1) || (this.currentGame.playerW == -1))
+     //return ((this.currentGame.playerB == -1) || (this.currentGame.playerW == -1))
+     return true;
    }
 
 
