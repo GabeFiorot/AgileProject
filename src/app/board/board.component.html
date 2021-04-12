@@ -7,6 +7,8 @@
  <aside>
    <h3>Chat:</h3>
    <br>
+   <div *ngIf='this.isOpponentPresent()'>Waiting for Opponent</div>
+   
    <div style="margin-left: 10px; white-space: pre-wrap;">
     <article>
       {{this.currentGame.chat}}

@@ -27,6 +27,11 @@ export class BoardComponent implements OnInit {
       
    }
 
+   isOpponentPresent()
+   {
+     return ((this.currentGame.playerB == -1) || (this.currentGame.playerW == -1))
+   }
+
   ngOnInit(): void {
     
     this.board = ChessBoard('board1', {
