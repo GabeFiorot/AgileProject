@@ -1,5 +1,6 @@
-<p>login works!</p>
-<form [formGroup]="loginForm" (ngSubmit)="login()" >
+<section>
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" >
 
       <input type="text" formControlName="username" placeholder="username" required>
 
@@ -7,3 +8,4 @@
 
     <button type="submit" >Login</button>
   </form>
+</section>

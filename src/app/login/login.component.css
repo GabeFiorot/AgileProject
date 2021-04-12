@@ -1,0 +1,29 @@
+section{
+    width:15%;
+    margin: 20px;
+    padding: 20px;
+    background-color:rgb(109, 108, 108);
+    border-radius: 3px;
+}
+
+input{
+    margin: 3px;
+    display: inline-block;
+}
+
+button{
+    background-color: #34ce2f;
+    border: none;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding: 2px;
+    margin-left: 5px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+button:hover{
+    background-color: green;
+}

@@ -13,11 +13,27 @@
   
   section {
     float: left;
-    width: 60%;
+    width: 45%;
+    margin-left: 100px;
+    
   }
 
   aside{
-    float: right;
-    width: 40%;
+    float: left;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(109, 108, 108);
+    border: 2px;
+    border-color: rgb(80, 80, 80);
+    border-radius: 3px;
+
   }
+
+  article{
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+    padding: 2px;
+  }
+
   
